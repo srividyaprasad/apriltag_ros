@@ -222,7 +222,7 @@ def detection_callback(msg):
         rospy.loginfo(f"PITCH: {abs(pitch_deg)}")
 
 
-        if (distance<1.5 and distance>0.5 and abs(pitch_deg)<=1 and (180-abs(roll_deg))<=1):
+        if (distance<3 and abs(pitch_deg)<=1 and (180-abs(roll_deg))<=1):
             base_tag = mul(static_transform_base_cam, cam_tag)
             world_tag = tf_buffer.lookup_transform('world', f'tag_{tag_id}', rospy.Time(0), rospy.Duration(5.0))
 
