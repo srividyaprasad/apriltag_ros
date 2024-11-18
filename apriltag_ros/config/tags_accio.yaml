@@ -30,7 +30,7 @@ standalone_tags:
     {id: 6, size: 0.115, name: tag6},
     {id: 7, size: 0.115, name: tag7},
     {id: 8, size: 0.115, name: tag8},
-    {id: 9, size: 0.115, name: tag9},
+    {id: 9, size: 0.115, name: tag9}
   ]
 # ## Tag bundle definitions
 # ### Remarks

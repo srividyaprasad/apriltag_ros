@@ -222,7 +222,7 @@ def detection_callback(msg):
         rospy.loginfo(f"PITCH: {abs(pitch_deg)}")
 
 
-        if (distance<3 and abs(pitch_deg)<=1 and (180-abs(roll_deg))<=1):
+        if (distance<2.5): # or (abs(pitch_deg)<=2 and (180-abs(roll_deg))<=2)):
             base_tag = mul(static_transform_base_cam, cam_tag)
             world_tag = tf_buffer.lookup_transform('world', f'tag_{tag_id}', rospy.Time(0), rospy.Duration(5.0))
 
@@ -250,7 +250,7 @@ def detection_callback(msg):
                 pose_stamped.orientation = pose.pose.pose.orientation
                 pose_history_msg.poses.append(pose_stamped)
 
-            history_pub.publish(pose_history_msg)
+        history_pub.publish(pose_history_msg)
     
 if __name__ == '__main__':
     try:
