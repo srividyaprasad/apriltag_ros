@@ -234,11 +234,26 @@ def detection_callback(msg):
             tag_robot_pose.header.frame_id = 'world'
             tag_robot_pose.pose.pose.position = world_base.transform.translation
             tag_robot_pose.pose.pose.orientation = world_base.transform.rotation
-            tag_robot_pose.pose.covariance = [0.0]*36
-            pub.publish(tag_robot_pose)
-
             # Add to history
             pose_history.append(tag_robot_pose)
+
+            if len(pose_history) > 1:
+                positions = np.array([[pose.pose.pose.position.x, 
+                                       pose.pose.pose.position.y, 
+                                       pose.pose.pose.position.z] for pose in pose_history])
+                position_covariance = np.cov(positions, rowvar=False)
+
+                # Flatten 3x3 covariance matrix for positions into PoseWithCovariance's 6x6 format
+                tag_robot_pose.pose.covariance[0:3] = position_covariance[0, 0:3]
+                tag_robot_pose.pose.covariance[6:9] = position_covariance[1, 0:3]
+                tag_robot_pose.pose.covariance[12:15] = position_covariance[2, 0:3]
+
+                # Orientation covariance can be similarly computed from quaternions if needed
+                # Placeholder values for orientation covariance:
+                tag_robot_pose.pose.covariance[21:24] = [0.01, 0.0, 0.0]
+                tag_robot_pose.pose.covariance[27:30] = [0.0, 0.01, 0.0]
+                tag_robot_pose.pose.covariance[33:36] = [0.0, 0.0, 0.01]
+            pub.publish(tag_robot_pose)
 
             # Publish pose history
             pose_history_msg = geometry_msgs.msg.PoseArray()
