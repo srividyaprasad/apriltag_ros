@@ -21,17 +21,17 @@
 #   ]
 standalone_tags:
   [
-    {id: 1, size: 0.3243, name: tag1},
-    {id: 2, size: 0.3243, name: tag2},
-    {id: 3, size: 0.3243, name: tag3},
-    {id: 4, size: 0.3243, name: tag4},
-    {id: 5, size: 0.3243, name: tag5},
-    {id: 6, size: 0.3243, name: tag6},
-    {id: 7, size: 0.3243, name: tag7},
-    {id: 8, size: 0.3243, name: tag8},
-    {id: 9, size: 0.3243, name: tag9},
-    {id: 10, size: 0.3243, name: tag10},
-    {id: 11, size: 0.3243, name: tag11}
+    {id: 1, size: 0.2694, name: tag1},
+    {id: 2, size: 0.2694, name: tag2},
+    {id: 3, size: 0.2694, name: tag3},
+    {id: 4, size: 0.2694, name: tag4},
+    {id: 5, size: 0.2694, name: tag5},
+    {id: 6, size: 0.2694, name: tag6},
+    {id: 7, size: 0.2694, name: tag7},
+    {id: 8, size: 0.2694, name: tag8},
+    {id: 9, size: 0.2694, name: tag9},
+    {id: 10, size: 0.2694, name: tag10},
+    {id: 11, size: 0.2694, name: tag11}
   ]
 # ## Tag bundle definitions
 # ### Remarks

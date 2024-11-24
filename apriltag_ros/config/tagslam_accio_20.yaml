@@ -1,0 +1,190 @@
+tagslam_parameters:
+# optimizer mode: full (full optimization, no iSAM2 used)
+#                 slow (use iSAM2, but test for error and use full if error is large)
+#                 fast (iSAM2 only, no test for error)
+# default: slow
+  optimizer_mode: fast
+# minimum angle [in degrees] between optical axis and tag surface
+  minimum_viewing_angle: 15.0
+# minimum tag area in pixels^2. Any tags smaller than that are ignored
+  minimum_tag_area: 8000
+# number of incremental updates before running
+# a full graph optimization (default: 50)
+  max_num_incremental_opt: 50
+# estimated error of tag corner detector
+  pixel_noise: 1.0
+# maximum allowed subgraph error. If error is above that,
+# the frame is thrown away, the measurement ignored.
+  max_subgraph_error: 50.0
+# Noise with which the subgraph absolute priors will be
+# pinned down. This parameter usually does not need to be touched.
+  subgraph_abs_prior_position_noise: 0.1
+  subgraph_abs_prior_rotation_noise: 0.1
+# if the time stamps (header.stamp) of your data messages are not
+# identical (hardware synced), set this option to true, and
+# tagslam tries to line them up as well as possible. Expect larger errors
+# because the data is not truly synchronous.
+  use_approximate_sync: true
+
+body_defaults:
+  position_noise: 0.05
+  rotation_noise: 0.01
+default_body: grasp_lab
+bodies:
+ - grasp_lab:
+     is_static: true
+     default_tag_size: 0.115
+     pose:
+       position:
+         x: 0
+         y: 0
+         z: 0
+       rotation:
+         x: 0
+         y: 0
+         z: 0
+       position_noise:
+         x: 0.0001
+         y: 0.0001
+         z: 0.0001
+       rotation_noise:
+         x: 1.0e-05
+         y: 1.0e-05
+         z: 1.0e-05
+     type: simple
+     tags:
+     - id: 3
+       size: 0.11500000
+       pose:
+         position:
+           x: 4.61100000
+           y: -0.83700000
+           z: 0.36100000
+         rotation:
+           x: 1.31024230
+           y: -1.17873090
+           z: -1.19821410
+         position_noise:
+           x: 0.23331851
+           y: 1.00000000
+           z: 1.00000000
+         rotation_noise:
+           x: 1.41695266
+           y: 1.00000000
+           z: 1.00000000
+     - id: 9
+       size: 0.11500000
+       pose:
+         position:
+           x: 5.67120006
+           y: 1.16029456
+           z: 0.35830545
+         rotation:
+           x: -2.23862029
+           y: -0.04670558
+           z: 2.19901081
+         position_noise:
+           x: 0.01460463
+           y: 0.01702556
+           z: 0.02931314
+         rotation_noise:
+           x: 0.01901711
+           y: 0.02206098
+           z: 0.00441849
+     - id: 5
+       size: 0.11500000
+       pose:
+         position:
+           x: 7.73617939
+           y: -0.81941877
+           z: 0.34015144
+         rotation:
+           x: 2.20183702
+           y: 0.12840872
+           z: -2.14323545
+         position_noise: 
+           x: 0.04889250     
+           y: 0.04132672
+           z: 0.07469302
+         rotation_noise:
+           x: 0.03989745
+           y: 0.04209789
+           z: 0.02273748
+     - id: 6
+       size: 0.11500000
+       pose:
+         position:
+           x: 6.46789763
+           y: 1.90979261
+           z: 0.41519739
+         rotation:
+           x: 0.08183170
+           y: 1.57248965
+           z: -0.11900819
+         position_noise:
+           x: 0.61821891
+           y: 0.43205740
+           z: 0.41328845
+         rotation_noise:
+           x: 0.08901657
+           y: 0.11335125
+           z: 0.26061579
+     - id: 0
+       size: 0.11500000
+       pose:
+         position:
+           x: 3.07583139
+           y: 1.86781278
+           z: 0.35209708
+         rotation:
+           x: 1.27764329
+           y: 1.13456269
+           z: 1.17748264
+         position_noise:
+           x: 0.35821285
+           y: 0.47367683
+           z: 0.39297864
+         rotation_noise:
+           x: 0.11290490
+           y: 0.08742847
+           z: 0.26009465
+     - id: 1
+       size: 0.11500000
+       pose:
+         position:
+           x: 0.85248659
+           y: 1.87184198
+           z: 0.33392608
+         rotation:
+           x: 0.07514027
+           y: 1.55249666
+           z: -0.08471511
+         position_noise:
+           x: 0.53684272
+           y: 0.42300929
+           z: 0.38934934
+         rotation_noise:
+           x: 0.09137905
+           y: 0.11543898
+           z: 0.26027528
+ 
+ - base_link:
+     is_static: false
+     type: simple
+     odom_frame_id: base_link
+     odom_topic: "/odom"
+     odom_acceleration_noise_min: 5.0
+     odom_acceleration_noise_max: 40.0
+     odom_angular_acceleration_noise_min: 5.0
+     odom_angular_acceleration_noise_max: 40.0
+     odom_translation_noise: 0.02
+     odom_rotation_noise: 0.02
+     T_body_odom:
+       position:
+         x:  0.0
+         y:  0.0
+         z:  0.0
+       rotation:
+         x:  0.0
+         y:  0.0 
+         z:  0.0
